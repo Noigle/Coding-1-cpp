@@ -44,7 +44,7 @@ int main() {
         for(int i = 0; i < favGames.size(); i++) {
             cout << favGames[i] << "\n";
         }
-
+        sort(favGames.begin(), favGames.end());
 
         // after input, provide options available to do
             // list will include 'quit', 'add more', 'remove', 'edit', 'remove all'
@@ -68,6 +68,7 @@ int main() {
                 cout << "What game would you like to add?\n";
                 std::getline(cin, input);
                 favGames.push_back(input);
+                sort(favGames.begin(), favGames.end());
         }
             // 'remove' will remove one game
 
@@ -95,6 +96,7 @@ int main() {
             cout << "Here is your current list of favorite games:\n";
             for(int i = 0; i < favGames.size(); i++) {
                 cout << "     "  << favGames[i] << "\n";
+                sort(favGames.begin(), favGames.end());
             }
 
             iter = favGames.begin();
@@ -114,6 +116,7 @@ int main() {
             cout << "Here is your current list of favorite games:\n";
             for(int i = 0; i < favGames.size(); i++) {
                 cout << "     "  << favGames[i] << "\n";
+                sort(favGames.begin(), favGames.end());
             }
             }
             // 'remove all' "clear()" will remove all games from vector
