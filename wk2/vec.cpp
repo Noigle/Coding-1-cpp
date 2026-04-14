@@ -11,11 +11,27 @@ using namespace std;
 int main() {
     cout << "Let's Learn about vectors!\n";
 
+    // make a global-ish vector of favs, so that 
+        // we are able to see our changes though the loops
+    // talk about the auto variable type
+    // talk about removing with .erase()
+    // sorting with sort()
+    // then start the homework
+
+    // this vector exists outside the do-while loop
+    // so it won't be destroyed every loop
+    vector<string> favGames = { "Pokemon", "Slay The Spire 2", "Nine Sols", "Terraria"};
+
+
+
+
+
     string input;
     // int to numberInput = stoi(input);
+
     do{
         cout << "What would you like to do?\n";
-        cout << "You can type 'quit', 'find', 'push'.\n";
+        cout << "You can type 'quit', 'find', 'push', 'remove'.\n";
 
         getline(cin, input);        // get input from player
     
@@ -95,15 +111,38 @@ int main() {
                 for(int i = 0; i < favs.size(); i++) {
                     cout << "     "  << favs[i] << "\n";
                 }
-               
+                           
+            }
+            else {
+                cout << "We couldn't find that name.\n";
+            }
 
+        }
+
+        else if(input == "remove") {
+            // sort the faveGames vector alphabetically
+            sort(favGames.begin(), favGames.end());
+
+            cout << "Here are your favorite Games:\n";
             
-        }
-        else {
-            cout << "We couldn't find that name.\n";
-        }
+            for(int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+            }
 
+            cout << "What game would you like to remove from the list?\n";
+            getline(cin, input);
 
+            auto iter = find(favGames.begin(), favGames.end(), input);
+
+            if(iter != favGames.end()) {
+                cout << "We've found that name. removing now.\n";
+                favGames.erase(iter);   // remove the element the iter is pointing at.
+            }
+            
+            cout << "\n\nHere are your favorite games:\n";
+            for(int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+            }
 
 
         }
