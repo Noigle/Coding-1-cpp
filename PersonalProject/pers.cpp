@@ -11,7 +11,6 @@
 #include<string>
 #include<vector>
 #include<algorithm>
-#include<cstdlib>
 
 using namespace std;
 
@@ -21,12 +20,12 @@ when user selects game, show the top 'x' favorite characters
 allow user to create a game and add their favorite characters
 
 */
-void showVec(vector<string>& GameShow) {
+void showGameShow(vector<string>& GameShow) {
     for(int i = 0; i < GameShow.size(); i++) {
         cout << GameShow[i] << endl;
     }
 }
-void showVec(vector<string>& ATnames) {
+void showATnames(vector<string>& ATnames) {
     for(int i = 0; i < ATnames.size(); i++) {
         cout << ATnames[i] << endl;
     }
@@ -44,7 +43,7 @@ int main() {
         
         GameShow.push_back(input);
         cout << "That's an interesting choice.\n";
-    showVec(GameShow);
+    showGameShow(GameShow);
 
 
     return 0;
