@@ -55,13 +55,14 @@ void read(vector<string>& names, string path = "names.txt") {
 }
 
 class baseSlime {
-public:
+private:
     string name;
     int speed;
     int hunger;
     int health;
     int damage;
 
+    public:
     // default constructor
     baseSlime() {
         cout << "A new slime has been ecountered.\n";
@@ -126,32 +127,49 @@ public:
             speed = 0;
         }
         else speed = givenSpeed;
-        }
+    }
 
     void setHunger(int givenHunger) {
-        if (givenCharge < 0) {
-            charge = 0;
+        if (givenHunger < 0) {
+            hunger = 0;
         }
+        else hunger = givenHunger;
+    }
+
+    void setHealth(int givenHealth) {
+        if (givenHealth < 0) {
+            health = 0;
         }
-        else charge = givenCharge;
+        else health = givenHealth;
+    }
+
+    void setDamage(int givenDamage) {
+        if (givenDamage < 1) {
+            damage = 1;
+        }
+        else damage = givenDamage;
+    }
     
 };
 
 class myPet {
-public:
+private:
     string name;
     int speed;
     int hunger;
     int health;
     int damage;
 
+    public:
+
     //myPet constructor
-    myPet() {
-        name =  "Your Pet"; //getline(cin, input);
-        speed = 3;
-        hunger = 5;
-        health = 5;
-        damage = 2;
+    myPet(string givenName, int givenSpeed, int givenHunger, int givenHealth,
+        int givenDamage ) {
+        name =  givenName; // getline(cin, input);
+        speed = givenSpeed;
+        hunger = givenHunger;
+        health = givenHealth;
+        damage = givenDamage;
     }
     void hello() {
         cout << "I'm " << name << ", with " << health << " health ";
@@ -193,19 +211,59 @@ public:
     int getDamage() {
         return damage;
     }
+// Setters
+    void setName(string givenName) {
+        if(givenName.size() <= 12){
+            name = givenName;
+        }
+        else {
+            cout << "error: " << givenName << " is too long.\n";
+        }
+    }
+    void setSpeed(int givenSpeed) {
+        if(givenSpeed < 0){
+            speed = 0;
+        }
+        else speed = givenSpeed;
+    }
+
+    void setHunger(int givenHunger) {
+        if (givenHunger < 0) {
+            hunger = 0;
+        }
+        else hunger = givenHunger;
+    }
+
+    void setHealth(int givenHealth) {
+        if (givenHealth < 0) {
+            health = 0;
+        }
+        else health = givenHealth;
+    }
+
+    void setDamage(int givenDamage) {
+        if (givenDamage < 1) {
+            damage = 1;
+        }
+        else damage = givenDamage;
+    }
+    
+
 };
 
 int main() {
 
     cout << "------------------------------------\n";
+    string input = "asdf";
 
-    myPet();
+
+    myPet(input, 1,1,1,1);
 
     cout << "Your pet's egg has hatched, what would you like to name them?\n";
-
+    
     getline(cin, input);
 
-    myPet(name).push_back("input");
+    myPet(setName).push_back("input");
 
 
 
