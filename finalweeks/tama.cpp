@@ -57,103 +57,101 @@ void read(vector<string>& names, string path = "names.txt") {
 
 
 
-class baseSlime {
-private:
-    string name;
-    int speed;
-    int hunger;
-    int health;
-    int damage;
+// class baseSlime {
+// private:
+//     string name;
+//     int speed;
+//     int hunger;
+//     int health;
+//     int damage;
 
-    public: 
+//     public: 
     
-    // default constructor
-    baseSlime() {
-        name = names[rand() % names.size()];
-        speed = 20;
-        hunger = 5;
-        health = 35;
-        damage = 10;
-    }
+//     // default constructor
+//     baseSlime() {
+//         name = names[rand() % names.size()];
+//         speed = 20;
+//         hunger = 5;
+//         health = 35;
+//         damage = 10;
+//     }
 
 
-    void enemyHello() {
-        cout << "I'm " << name << ", with " << health << " health ";
-        cout << speed <<" speed " << hunger << " hunger ";
-        cout << "and " << damage << " damage.\n";
-    }
+//     void enemyHello() {
+//         cout << "I'm " << name << ", with " << health << " health ";
+//         cout << speed <<" speed " << hunger << " hunger ";
+//         cout << "and " << damage << " damage.\n";
+//     }
 
-    // attack another slime
-    bool attack(baseSlime& opponent) {
-        opponent.health -= damage;
-        cout << name << " has done " << damage << " damage to ";
-        cout << opponent.name << "!\n";
+//     // attack another slime
+//     bool attack(baseSlime& opponent) {
+//         opponent.health -= damage;
 
-        if (opponent.health <= 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    string getName(){
-        return name;
-    }
+//         if (opponent.health <= 0) {
+//             return true;
+//         }
+//         else {
+//             return false;
+//         }
+//     }
+//     string getName(){
+//         return name;
+//     }
 
-    int getSpeed() {
-        return speed;
-    }
+//     int getSpeed() {
+//         return speed;
+//     }
 
-    int getHunger() {
-        return hunger;
-    }
+//     int getHunger() {
+//         return hunger;
+//     }
 
-    int getHealth() {
-        return health;
-    }
+//     int getHealth() {
+//         return health;
+//     }
     
-    int getDamage() {
-        return damage;
-    }
+//     int getDamage() {
+//         return damage;
+//     }
 
-    // Setters
-    void setName(string givenName) {
-        if(givenName.size() <= 30){
-            name = givenName;
-        }
-        else {
-            cout << "error: " << givenName << " is too long.\n";
-        }
-    }
-    void setSpeed(int givenSpeed) {
-        if(givenSpeed < 0){
-            speed = 0;
-        }
-        else speed = givenSpeed;
-    }
+//     // Setters
+//     void setName(string givenName) {
+//         if(givenName.size() <= 30){
+//             name = givenName;
+//         }
+//         else {
+//             cout << "error: " << givenName << " is too long.\n";
+//         }
+//     }
+//     void setSpeed(int givenSpeed) {
+//         if(givenSpeed < 0){
+//             speed = 0;
+//         }
+//         else speed = givenSpeed;
+//     }
 
-    void setHunger(int givenHunger) {
-        if (givenHunger < 0) {
-            hunger = 0;
-        }
-        else hunger = givenHunger;
-    }
+//     void setHunger(int givenHunger) {
+//         if (givenHunger < 0) {
+//             hunger = 0;
+//         }
+//         else hunger = givenHunger;
+//     }
 
-    void setHealth(int givenHealth) {
-        if (givenHealth < 0) {
-            health = 0;
-        }
-        else health = givenHealth;
-    }
+//     void setHealth(int givenHealth) {
+//         if (givenHealth < 0) {
+//             health = 0;
+//         }
+//         else health = givenHealth;
+//     }
 
-    void setDamage(int givenDamage) {
-        if (givenDamage < 1) {
-            damage = 1;
-        }
-        else damage = givenDamage;
-    }
+//     void setDamage(int givenDamage) {
+//         if (givenDamage < 1) {
+//             damage = 1;
+//         }
+//         else damage = givenDamage;
+//     }
     
-};
+// };
 
 class myPet {
 private:
@@ -174,8 +172,16 @@ private:
         health = givenHealth;
         damage = givenDamage;
     }
+    // default constructor
+    myPet() {
+        name = names[rand() % names.size()];
+        speed = 20;
+        hunger = 5;
+        health = 35;
+        damage = 10;
+    }
     void hello() {
-        cout << "I'm your pet " << name << ", with " << health << " health ";
+        cout << "I'm " << name << ", with " << health << " health ";
         cout << speed <<" speed " << hunger << " hunger ";
         cout << "and " << damage << " damage.\n";
     }
@@ -183,8 +189,6 @@ private:
     // attack another slime
     bool petAttack(myPet& opponent) {
         opponent.health -= damage;
-        cout << name << " has done " << damage << " damage to ";
-        cout << opponent.name << "!\n";
 
         if (opponent.health <= 0) {
             return true;
@@ -241,8 +245,8 @@ private:
         if (givenHealth < 0) {
             health = 0;
         }
-        else if(givenHealth > 100) {
-            health = 100;
+        else if(givenHealth > 200) {
+            health = 200;
         }
         else health = givenHealth;
     }
@@ -293,7 +297,7 @@ int main() {
         }
         cout << "--------------------------------------------------------\n";
         cout << "What would you like to do with your pet?\n";
-        cout << "You can 'fight', 'bulk', 'train', 'feed',";
+        cout << "You can 'fight', 'rest', 'train', 'feed',";
         cout << "'show stats', 'rename', or 'quit'\n";
     
         getline(cin, input);
@@ -306,7 +310,7 @@ int main() {
         //          
         if(input == "fight") {
             srand(time(0 % 1000));
-            baseSlime slimer;
+            myPet slimer;
 
             if(yourpet.getHunger() >= 10) {
                 cout << yourpet.getName() << " is too hungry to fight.\n";
@@ -322,6 +326,7 @@ int main() {
             // name based stats
             if(slimer.getName() == "Reverse Flash The Yellow Slime") {
                 slimer.setSpeed(100);
+                slimer.setDamage(18);
             }
             else if(slimer.getName() == "Mark The Blue Slime") {
                 slimer.setSpeed(70);
@@ -368,13 +373,20 @@ int main() {
                 slimer.setDamage(35);
                 slimer.setHealth(120);
             }
+            slimer.hello();
+
             //  make fight code here
             do{
                 auto& a = yourpet;
                 auto& b = slimer;
-                yourpet.petAttack(b);
-                slimer.enemyHello();
+               // yourpet.petAttack(b);                
                 if(a.getSpeed() > b.getSpeed()) {
+                    if(yourpet.getHealth() <= 0) {
+                        cout << "Sadly " << yourpet.getName() << " has died...\n";
+                        cout << "You can try again in the next game.\n";
+                        break;
+                    }
+                    cout << "--- Your Turn ---\n";
                     cout << "You are faster, what would you like to do?\n";
                     cout << "You can 'attack' or 'run away'.\n";
                     getline(cin, input);
@@ -382,20 +394,56 @@ int main() {
                         a.petAttack(b);
                         cout << a.getName() << " does " << a.getDamage() << " damage to " << b.getName() << ".\n";
                         cout << b.getName() << " has " << b.getHealth() << " health left.\n";
+                        b.petAttack(a);
+                        cout << "--- Enemy Attack ---\n";
+                        cout << b.getName() << " does " << b.getDamage() << " damage to " << a.getName() << ".\n";
+                        cout << a.getName() << " has " << a.getHealth() << " health left.\n";
 
                     }
                     else if(input == "run away") {
-                        cout << "You run away with your pet, your pet grows hungier.\n";
+                        cout << "You run away with your pet, your pet grows hungerier.\n";
 
                         yourpet.changeHungerBy();
                         break;
                     }
+                    else {
+                        cout << "Input Unknown\n";
+                    }
                 }
+                if (slimer.getHealth() <= 0) {
+                cout << "--- Victory is yours ---\n";
+            cout << "What skill would you like to increase?\n";
+            cout << "'damage' or 'speed'.\n"; 
+
+                do {
+                    getline(cin,input);
+                    if(input == "damage") {
+                    yourpet.changeDamageBy(8);
+                    cout << yourpet.getName() << "'s damage was increased to " << yourpet.getDamage() << ".\n";
+                    break;
+                    }
+                    else if(input == "speed") {
+                    yourpet.changeSpeedBy(8);
+                    cout << yourpet.getName() << "'s speed was increased to " << yourpet.getSpeed() << ".\n";
+
+                    break;
+                     }
+                    
+                } while(input != "damage" && input != "speed");
+            }
                 else if(b.getSpeed() > a.getSpeed()) {
                     cout << b.getName() << " is faster.\n";
-                    b.attack(a);
+                    b.petAttack(a);
+                    cout << "--- Enemy Attack ---\n";
                     cout << b.getName() << " does " << b.getDamage() << " damage to " << a.getName() << ".\n";
                     cout << a.getName() << " has " << a.getHealth() << " health left.\n";
+                    if(yourpet.getHealth() <= 0) {
+                        cout << "Sadly " << yourpet.getName() << " has died...\n";
+                        cout << "You can try again in the next game.\n";
+                        break;
+                    }
+                    do{
+                    cout << "--- Your Turn ---\n";
                     cout << "You can 'attack' or 'run away'.\n";
                     getline(cin, input);
                     if(input == "attack") {
@@ -405,13 +453,20 @@ int main() {
 
                     }
                     else if(input == "run away") {
-                        cout << "You run away with your pet, your pet grows hungier.\n";
+                        cout << "You run away with your pet, your pet grows hungerier.\n";
                         yourpet.changeHungerBy();
                         break;
                     }
+                    else {
+                        cout << "Input Unknown\n";
+                    }
+                }while(input != "attack" && input != "run away");
+                if(input == "run away") {
+                    break;
+                }
                 }
             if (slimer.getHealth() <= 0) {
-                cout << "Victory is yours.\n";
+                cout << "--- Victory is yours ---\n";
             cout << "What skill would you like to increase?\n";
             cout << "'damage' or 'speed'.\n"; 
 
@@ -451,6 +506,7 @@ int main() {
         else if(input == "rest") {
             cout << "You have chosen to increase your HP\n";
             if(yourpet.getHealth() >= 100) {
+                yourpet.setHealth(100);
                 cout << yourpet.getName() << "'s health is already at max.\n";
                 continue;
             }
@@ -471,10 +527,12 @@ int main() {
             getline(cin, input);
             if(input == "damage") {
                 yourpet.changeDamageBy();
+                cout << "Your pet's damage is now " << yourpet.getDamage() << ".\n";
                 continue;
             }
             else if(input == "speed") {
                 yourpet.changeSpeedBy();
+                cout << "Your pet's speed is now " << yourpet.getSpeed() << ".\n";
                 continue;
             }
             else {
